@@ -60,6 +60,7 @@ export default function Home() {
               items={hotels}
               value={selectedHotel}
               onChange={setSelectedHotel}>
+                {((item: Hotel) => <Item key={item.value}>{item.label}</Item>) as any}
             </Select>}
         </div>
 
