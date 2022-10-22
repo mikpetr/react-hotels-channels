@@ -19,7 +19,7 @@ export default function ChannelsListRow(props: ChannelsListRowProps) {
     // Here is a different way to fetch hotel visibility per hotel per channel based on bonus requirements
     // Although this is not used right now.
     hotelsChannelsApi.getHotelVisibilityInChannel(props.hotelId, props.channel.value).then(isVisible => {
-      console.log(isVisible)
+      // console.log(isVisible)
     })
   }, [])
 
@@ -38,7 +38,7 @@ export default function ChannelsListRow(props: ChannelsListRowProps) {
   }
 
   return (
-    <tr className="border-t border-slate-300">
+    <tr className="border-t border-slate-300 dark:border-slate-500/30 dark:bg-slate-800">
       <td className="px-4 py-3 text-left leading-5">{props.channel.label}</td>
       <td className="px-4 py-3 text-right flex flex-row-reverse">
         <Switch aria-label="" className="flex" isSelected={isAvailable} onChange={onSwitchChange} />

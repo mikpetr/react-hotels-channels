@@ -22,16 +22,7 @@ export default function ListBox(props: ListBoxProps) {
       <ul
         {...listBoxProps}
         ref={ref}
-        style={{
-          // padding: 0,
-          // margin: '5px 0',
-          // listStyle: 'none',
-          // border: '1px solid gray',
-          // maxWidth: 300,
-          // maxHeight: 300,
-          // overflow: 'auto'
-        }}
-        className="rounded-md w-full bg-white box-border text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm padding-1"
+        className="rounded-md w-full bg-white dark:bg-slate-700 box-border text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm padding-1"
       >
         {[...state.collection].map((item) => (
           <Option key={item.key} item={item} state={state} />

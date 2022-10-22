@@ -74,7 +74,7 @@ export default function Select(props: SelectProps) {
         <Button
           {...triggerProps}
           buttonRef={buttonRef}
-          className="inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+          className="inline-flex w-full justify-between rounded-md border border-gray-300 dark:border-slate-500/30 bg-white dark:bg-slate-800 px-3 py-2 text-base font-medium text-gray-700 dark:text-slate-400 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:ring-blue-800"
         >
           <span {...valueProps}>
             {state.selectedItem

@@ -3,7 +3,7 @@ import { FocusRingAria, SwitchAria, useFocusRing, useSwitch } from 'react-aria'
 import { useRef, RefObject } from 'react'
 
 interface SwitchProps extends ToggleProps {
-  className: string
+  className?: string
 }
 
 export function Switch(props: SwitchProps) {
