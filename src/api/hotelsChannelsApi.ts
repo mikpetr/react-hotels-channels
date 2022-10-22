@@ -16,6 +16,11 @@ const hotelsChannelsApi = {
     hotel[channelId] = isVisible
 
     await dbOrm.setVisibilityStatuses(statuses)
+  },
+  async getHotelVisibilityInChannel(hotelId: number, channelId: number): Promise<boolean> {
+    const hotelsChannels: HotelsChannels = await hotelsChannelsApi.getHotelsChannelsVisibility()
+    const hotel = hotelsChannels[hotelId] || {}
+    return !!hotel[channelId]
   }
 }
 

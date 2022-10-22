@@ -5,6 +5,9 @@ import { RootState } from '@/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAvailability } from '@/store/hotelsChannelsSlice'
 
+import hotelsChannelsApi from '@/api/hotelsChannelsApi'
+import { useEffect } from 'react'
+
 interface ChannelsListRowProps {
   channel: Channel,
   hotelId: number,
@@ -12,11 +15,19 @@ interface ChannelsListRowProps {
 
 export default function ChannelsListRow(props: ChannelsListRowProps) {
 
+  useEffect(() => {
+    // Here is a different way to fetch hotel visibility per hotel per channel based on bonus requirements
+    // Although this is not used right now.
+    hotelsChannelsApi.getHotelVisibilityInChannel(props.hotelId, props.channel.value).then(isVisible => {
+      console.log(isVisible)
+    })
+  }, [])
+
   const dispatch = useDispatch()
   const isAvailable = useSelector((state: RootState) => {
     const hotel = state.hotelsChannels.value[props.hotelId] || {}
     return !!hotel[props.channel.value]
-  }) 
+  })
 
   const onSwitchChange = (value: boolean) => {
     dispatch(setAvailability({
