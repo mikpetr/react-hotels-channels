@@ -1,0 +1,24 @@
+{
+  "hotels": [
+    {
+      "value": 1,
+      "label": "Hotel A"
+    },
+    {
+      "value": 2,
+      "label": "Hotel B"
+    },
+    {
+      "value": 3,
+      "label": "Hotel C"
+    },
+    {
+      "value": 4,
+      "label": "Hotel D"
+    },
+    {
+      "value": 5,
+      "label": "Hotel E"
+    }
+  ]
+}

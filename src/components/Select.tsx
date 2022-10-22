@@ -22,7 +22,7 @@ import { Popover } from './Popover'
 interface SelectProps extends AriaSelectOptions<object> {
   value: {
     value: string | number
-  },
+  } | undefined,
   onChange: Function,
   className: string | undefined,
 }
@@ -31,7 +31,7 @@ export default function Select(props: SelectProps) {
   // Create state based on the incoming props
   const state: SelectState<object> = useSelectState({
     ...props,
-    defaultSelectedKey: props?.value?.value.toString(),
+    selectedKey: props?.value?.value.toString(),
     onSelectionChange: (key) => {
       props.onChange(state.collection.getItem(key).value)
     }

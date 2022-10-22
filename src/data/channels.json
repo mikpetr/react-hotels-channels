@@ -1,0 +1,44 @@
+{
+  "channels": [
+    {
+      "value": 1,
+      "label": "Channel 1"
+    },
+    {
+      "value": 2,
+      "label": "Channel 2"
+    },
+    {
+      "value": 3,
+      "label": "Channel 3"
+    },
+    {
+      "value": 4,
+      "label": "Channel 4"
+    },
+    {
+      "value": 5,
+      "label": "Channel 5"
+    },
+    {
+      "value": 6,
+      "label": "Channel 6"
+    },
+    {
+      "value": 7,
+      "label": "Channel 7"
+    },
+    {
+      "value": 8,
+      "label": "Channel 8"
+    },
+    {
+      "value": 9,
+      "label": "Channel 9"
+    },
+    {
+      "value": 10,
+      "label": "Channel 10"
+    }
+  ]
+}
