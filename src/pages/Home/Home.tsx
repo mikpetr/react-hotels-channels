@@ -54,8 +54,12 @@ export default function Home() {
         <div className="select-wrapper w-40 sm:w-72">
           {
             hotels && selectedHotel &&
-            <Select className="hotel-select" label="Hotel" items={hotels} value={selectedHotel} onChange={setSelectedHotel}>
-              {(item: Hotel) => <Item key={item.value}>{item.label}</Item>}
+            <Select
+              className="hotel-select"
+              label="Hotel"
+              items={hotels}
+              value={selectedHotel}
+              onChange={setSelectedHotel}>
             </Select>}
         </div>
 
