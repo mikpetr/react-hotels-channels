@@ -38,7 +38,7 @@ export default function ChannelsListRow(props: ChannelsListRowProps) {
   }
 
   return (
-    <tr className="border-t border-slate-300 dark:border-slate-500/30 dark:bg-slate-800">
+    <tr className="border-t border-slate-300 dark:border-slate-500/30 dark:bg-slate-800" data-testid="channels-row">
       <td className="px-4 py-3 text-left leading-5">{props.channel.label}</td>
       <td className="px-4 py-3 text-right flex flex-row-reverse">
         <Switch aria-label="" className="flex" isSelected={isAvailable} onChange={onSwitchChange} />

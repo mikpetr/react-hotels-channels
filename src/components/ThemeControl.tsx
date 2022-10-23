@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 const isBrowserDefaultDark = (): boolean => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
+  if (window && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)')?.matches
+  }
+  
+  return false
 }
 
 export default function ThemeControl() {

@@ -43,7 +43,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="rounded-2xl bg-white overflow-hidden">
+    <div className="rounded-2xl bg-white overflow-hidden" data-testid="home-page">
       <header className="py-4 px-3 sm:px-6 border-b border-slate-200 dark:bg-slate-800 dark:border-slate-500/30 flex justify-between items-center">
         <img src={Logo} />
         <ThemeControl />

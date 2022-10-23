@@ -15,16 +15,16 @@ import { useRef, RefObject } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 // Reuse the ListBox, Popover, and Button from your component library. See below for details.
-import Button from './Button'
+import Button from '@/components/Button'
 import ListBox from './ListBox'
 import { Popover } from './Popover'
 
 interface SelectProps extends AriaSelectOptions<object> {
-  value: {
+  value?: {
     value: string | number
-  } | undefined,
-  onChange: Function,
-  className: string | undefined,
+  },
+  onChange?: Function,
+  className?: string | undefined,
 }
 
 export default function Select(props: SelectProps) {
@@ -33,7 +33,7 @@ export default function Select(props: SelectProps) {
     ...props,
     selectedKey: props?.value?.value.toString(),
     onSelectionChange: (key) => {
-      props.onChange(state.collection.getItem(key).value)
+      props.onChange && props.onChange(state.collection.getItem(key).value)
     }
   })
 
@@ -45,9 +45,10 @@ export default function Select(props: SelectProps) {
     labelProps,
     valueProps,
     menuProps,
+    triggerProps,
   }: SelectAria<object> = useSelect(props, state, buttonRef)
 
-  const { overlayProps, triggerProps }: OverlayTriggerAria = useOverlayTrigger(
+  const { overlayProps }: OverlayTriggerAria = useOverlayTrigger(
     { type: 'dialog' },
     state,
     buttonRef
@@ -62,7 +63,7 @@ export default function Select(props: SelectProps) {
   })
 
   return (
-    <div>
+    <div data-testid="hotel-select">
       <OverlayProvider>
         <div {...labelProps} className="text-base">{props.label}</div>
         <HiddenSelect
@@ -75,8 +76,9 @@ export default function Select(props: SelectProps) {
           {...triggerProps}
           buttonRef={buttonRef}
           className="inline-flex w-full justify-between rounded-md border border-gray-300 dark:border-slate-500/30 bg-white dark:bg-slate-800 px-3 py-2 text-base font-medium text-gray-700 dark:text-slate-400 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:ring-blue-800"
+          data-testid="select-button"
         >
-          <span {...valueProps}>
+          <span {...valueProps} data-testid="button-content">
             {state.selectedItem
               ? state.selectedItem.rendered
               : 'Select an option'}

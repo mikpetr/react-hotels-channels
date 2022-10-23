@@ -4,7 +4,7 @@ import type { RootState } from '@/store'
 import ChannelsListRow from './ChannelsListRow'
 
 interface ChannelsListProps {
-  className: string
+  className?: string
   hotelId: number,
 }
 
@@ -12,7 +12,11 @@ export default function ChannelsList(props: ChannelsListProps) {
   const channels = useSelector((state: RootState) => state.channels.value)
 
   return (
-    <div className={`border border-slate-300 dark:border-slate-500/30 rounded-lg overflow-hidden ${props.className}`}>
+    <div
+      className={
+        `border border-slate-300 dark:border-slate-500/30 rounded-lg overflow-hidden ${props.className}`
+      }
+      data-testid="channels-list">
       <table className="table-auto w-full text-sm">
         <thead className="bg-slate-50 dark:bg-slate-700 font-semibold">
           <tr>

@@ -28,6 +28,7 @@ export default function Option({ item, state }: OptionProps) {
         outline: isFocusVisible ? '2px solid orange' : 'none'
       }}
       className={`${isSelected ? 'text-white bg-indigo-600 dark:bg-slate-800 dark:text-white' : 'text-gray-900'} relative cursor-default select-none py-2 pl-3 pr-9 w-72 dark:text-slate-400`}
+      data-testid="select-option"
     >
       {item.rendered}
     </li>

@@ -2,8 +2,8 @@ import { AriaButtonProps, useButton } from 'react-aria'
 import { useRef, RefObject } from 'react'
 
 interface ButtonProps extends AriaButtonProps {
-  buttonRef: RefObject<HTMLButtonElement>
-  className: string | undefined,
+  buttonRef?: RefObject<HTMLButtonElement>
+  className?: string | undefined,
 }
 
 export default function Button(props: ButtonProps) {

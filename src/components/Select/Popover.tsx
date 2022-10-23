@@ -43,9 +43,6 @@ export const Popover = forwardRef(({
         {...mergeProps(overlayProps, dialogProps, otherProps, modalProps)}
         ref={ref}
         style={{
-          // background: 'white',
-          // color: 'black',
-          // padding: 30,
           ...style
         }}
       >
@@ -58,6 +55,6 @@ export const Popover = forwardRef(({
         {children}
         <DismissButton onDismiss={onClose} />
       </div>
-     </FocusScope>
+    </FocusScope>
   )
 })
