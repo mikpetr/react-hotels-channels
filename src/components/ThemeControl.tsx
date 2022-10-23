@@ -1,6 +1,7 @@
-import { Switch } from './Switch'
 import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
+
+import Switch from './Switch'
 
 const isBrowserDefaultDark = (): boolean => {
   if (window && window.matchMedia) {
@@ -46,7 +47,6 @@ export default function ThemeControl() {
       <div className="w-5 h-5 ml-2">
         <MoonIcon />
       </div>
-      
     </div>
   )
 }

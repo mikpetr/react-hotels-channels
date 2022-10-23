@@ -1,11 +1,11 @@
 import { describe, expect, test, beforeEach } from 'vitest'
 import { render, cleanup, waitFor } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
+import { Provider } from 'react-redux'
 import fireEvent from '@testing-library/user-event'
 
 import { store } from '@/store'
 import { setChannels } from '@/store/channelsSlice'
-import { Provider } from 'react-redux'
 
 import ChannelsList from './ChannelsList'
 import ChannelsListMock from './ChannelsList.mock'
@@ -41,7 +41,6 @@ describe('ChannelsList component', async () => {
     expect(store.getState().hotelsChannels.value[2]).not.toBeTruthy()
 
     const switches = queryAllByTestId('switch')
-
     expect(switches.length).toBe(2)
 
     await fireEvent.click(switches[1])  
@@ -52,4 +51,3 @@ describe('ChannelsList component', async () => {
     })
   })
 })
-

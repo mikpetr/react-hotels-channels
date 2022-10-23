@@ -1,12 +1,5 @@
-import Logo from '@/assets/images/logo.svg'
 import { useEffect, useState } from 'react'
-
-// For react-aria
-import Select from '@/components/Select'
-import ThemeControl from '@/components/ThemeControl'
 import { Item } from 'react-stately'
-
-import ChannelsList from './ChannelsList'
 
 import type { RootState } from '@/store'
 import { useSelector, useDispatch } from 'react-redux'
@@ -20,16 +13,19 @@ import hotelsChannelsApi from '@/api/hotelsChannelsApi'
 
 import { Hotel, Channel, HotelsChannels } from '@/types'
 
-export default function Home() {
+import Logo from '@/assets/images/logo.svg'
+import Select from '@/components/Select'
+import ThemeControl from '@/components/ThemeControl'
+import ChannelsList from './ChannelsList'
 
-  const dispatch = useDispatch()
-  const hotels = useSelector((state: RootState) => state.hotels.value)
+export default function Home() {
+  const dispatch: Function = useDispatch()
+  const hotels: Hotel[] = useSelector((state: RootState) => state.hotels.value)
   const [selectedHotel, setSelectedHotel]: [Hotel | undefined, Function] = useState()
 
   useEffect(() => {
     hotelsApi.getHotels().then((data: Hotel[]) => {
       dispatch(setHotels(data))
-
       setSelectedHotel(data[0])
     })
 
@@ -59,9 +55,11 @@ export default function Home() {
               label="Hotel"
               items={hotels}
               value={selectedHotel}
-              onChange={setSelectedHotel}>
+              onChange={setSelectedHotel}
+            >
                 {((item: Hotel) => <Item key={item.value}>{item.label}</Item>) as any}
-            </Select>}
+            </Select>
+          }
         </div>
 
         {selectedHotel?.value && <ChannelsList hotelId={selectedHotel.value} className="mt-5" />}

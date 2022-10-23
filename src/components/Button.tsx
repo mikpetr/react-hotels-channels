@@ -1,16 +1,16 @@
-import { AriaButtonProps, useButton } from 'react-aria'
-import { useRef, RefObject } from 'react'
+import { AriaButtonProps, ButtonAria, useButton } from 'react-aria'
+import { useRef, RefObject, ButtonHTMLAttributes } from 'react'
 
 interface ButtonProps extends AriaButtonProps {
   buttonRef?: RefObject<HTMLButtonElement>
-  className?: string | undefined,
+  className?: string | undefined
 }
 
 export default function Button(props: ButtonProps) {
   const ref: RefObject<HTMLButtonElement> = props.buttonRef || useRef() as RefObject<HTMLButtonElement>
 
-  const { buttonProps } = useButton(props, ref);
-  const { children } = props;
+  const { buttonProps }: ButtonAria<ButtonHTMLAttributes<HTMLButtonElement>> = useButton(props, ref)
+  const { children }: ButtonProps = props
 
   return (
     <button {...buttonProps} className={props.className} ref={ref}>

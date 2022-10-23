@@ -11,11 +11,11 @@ import {
   OverlayAria
 } from 'react-aria'
 import { forwardRef, HTMLProps, ForwardedRef, RefObject } from 'react'
-import { FocusableElement } from '@react-types/shared';
+import { FocusableElement } from '@react-types/shared'
 
 interface PopoverProps extends AriaOverlayProps, HTMLProps<HTMLDivElement> {}
 
-export const Popover = forwardRef(({
+const Popover = forwardRef(({
   title,
   children,
   isOpen,
@@ -48,7 +48,6 @@ export const Popover = forwardRef(({
       >
         <h3
           {...titleProps}
-          style={{ marginTop: 0 }}
         >
           {title}
         </h3>
@@ -58,3 +57,5 @@ export const Popover = forwardRef(({
     </FocusScope>
   )
 })
+
+export default Popover

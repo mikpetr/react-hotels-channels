@@ -1,25 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { CaseReducerActions, createSlice, Slice, SliceCaseReducers } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import hotelsChannelsApi from '@/api/hotelsChannelsApi'
 
-import { HotelsChannels, HotelsChannelsState } from '@/types'
+import { ChannelsStatuses, HotelsChannels, HotelsChannelsState } from '@/types'
 
 export interface HotelChannelStatus {
-  hotelId: number,
-  channelId: number,
+  hotelId: number
+  channelId: number
   isAvailable: boolean
 }
 
 const initialState: HotelsChannelsState = {
-  value: {},
+  value: {}
 }
 
-export const hotelsSlice = createSlice({
+export const hotelsSlice: Slice = createSlice({
   name: 'hotelsChannels',
   initialState,
   reducers: {
-    setAvailability: (state, { payload: { hotelId, channelId, isAvailable } }: PayloadAction<HotelChannelStatus>) => {
-      let hotelInstance = state.value[hotelId]
+    setAvailability: (state: any, { payload: { hotelId, channelId, isAvailable } }: PayloadAction<HotelChannelStatus>) => {
+      let hotelInstance: ChannelsStatuses = state.value[hotelId]
 
       if (!hotelInstance) {
         hotelInstance = state.value[hotelId] = {}
@@ -29,13 +29,13 @@ export const hotelsSlice = createSlice({
 
       hotelsChannelsApi.setHotelChannelVisibility(hotelId, channelId, isAvailable)
     },
-    setHotelsChannelsAvailability: (state, { payload }: PayloadAction<HotelsChannels>) => {
+    setHotelsChannelsAvailability: (state: any, { payload }: PayloadAction<HotelsChannels>) => {
       state.value = payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setAvailability, setHotelsChannelsAvailability } = hotelsSlice.actions
+export const { setAvailability, setHotelsChannelsAvailability }: CaseReducerActions<SliceCaseReducers<any>> = hotelsSlice.actions
 
 export default hotelsSlice.reducer

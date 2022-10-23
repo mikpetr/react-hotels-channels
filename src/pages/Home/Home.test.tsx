@@ -1,12 +1,12 @@
 import { describe, expect, test, beforeEach } from 'vitest'
 import { render, cleanup, screen } from '@testing-library/react'
+import { act } from 'react-dom/test-utils'
 
 import { store } from '@/store'
 import { Provider } from 'react-redux'
 import dbOrm from '@/dbOrm'
 
 import Home from './Home'
-import { act } from 'react-dom/test-utils'
 
 beforeEach(() => {
   cleanup()

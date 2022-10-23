@@ -1,10 +1,9 @@
 import { ListState } from 'react-stately'
-import { AriaListBoxOptions, useListBox } from 'react-aria'
+import { AriaListBoxOptions, ListBoxAria, useListBox } from 'react-aria'
 import { useRef, MutableRefObject } from 'react'
 import Option from './Option'
 
 interface ListBoxProps extends AriaListBoxOptions<object> {
-  // selectionMode: SelectionMode | undefined
   state: ListState<object>
 }
 
@@ -14,7 +13,7 @@ export default function ListBox(props: ListBoxProps) {
 
   // Get props for the listbox element
   const ref: MutableRefObject<HTMLUListElement> = useRef() as MutableRefObject<HTMLUListElement>
-  const { listBoxProps, labelProps } = useListBox(props as AriaListBoxOptions<object>, state, ref)
+  const { listBoxProps, labelProps }: ListBoxAria = useListBox(props as AriaListBoxOptions<object>, state, ref)
 
   return (
     <div data-testid="list-box">

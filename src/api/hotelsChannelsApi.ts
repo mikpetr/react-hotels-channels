@@ -1,27 +1,29 @@
 import dbOrm from '@/dbOrm'
-import { HotelsChannels } from '@/types'
+import { HotelsChannels, ChannelsStatuses } from '@/types'
 
 const hotelsChannelsApi = {
   async getHotelsChannelsVisibility(): Promise<HotelsChannels> {
-    const res = await dbOrm.getVisibilityStatuses()
+    const res: HotelsChannels = await dbOrm.getVisibilityStatuses()
     return res || {}
   },
+
   async setHotelChannelVisibility(hotelId: number, channelId: number, isVisible: boolean): Promise<void> {
     const statuses: HotelsChannels = await hotelsChannelsApi.getHotelsChannelsVisibility()
     
-    let hotel = statuses[hotelId]
-    if (!hotel) {
-      statuses[hotelId] = hotel = {}
+    let hotelChannelsStatuses: ChannelsStatuses = statuses[hotelId]
+    if (!hotelChannelsStatuses) {
+      statuses[hotelId] = hotelChannelsStatuses = {}
     }
     
-    hotel[channelId] = isVisible
+    hotelChannelsStatuses[channelId] = isVisible
 
     await dbOrm.setVisibilityStatuses(statuses)
   },
+
   async getHotelVisibilityInChannel(hotelId: number, channelId: number): Promise<boolean> {
     const hotelsChannels: HotelsChannels = await hotelsChannelsApi.getHotelsChannelsVisibility()
-    const hotel = hotelsChannels[hotelId] || {}
-    return !!hotel[channelId]
+    const hotelChannelsStatuses: ChannelsStatuses = hotelsChannels[hotelId] || {}
+    return !!hotelChannelsStatuses[channelId]
   }
 }
 

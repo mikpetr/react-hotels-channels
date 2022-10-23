@@ -2,10 +2,13 @@ import { describe, expect, test, beforeEach } from 'vitest'
 import { render, cleanup, waitFor, screen, fireEvent } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 import { openMenu } from 'react-select-event'
+import { Item } from 'react-stately'
+import { Hotel } from '@/types'
 
 import Select from './Select'
-
 import SelectMock from './Select.mock'
+
+
 
 beforeEach(() => {
   cleanup()
@@ -21,10 +24,13 @@ describe('Select component', () => {
     expect(screen.queryByTestId('list-box')).toBe(null)
   })
 
-  // If I had more time I would like to finalize this test. For some reason popover wan't open.
   test('Should open list box after click on trigger button', async () => {
     act(() => {
-      render(<Select items={SelectMock} children={null as any} label="Hotels" />)
+      render(
+        <Select items={SelectMock} label="Hotels">
+          {((item: Hotel) => <Item key={item.value}>{item.label}</Item>) as any}
+        </Select>
+      )
     })
     
     expect(screen.queryByTestId('list-box')).toBe(null)
@@ -35,8 +41,7 @@ describe('Select component', () => {
     act(() => {
       openMenu(selectButton)
     })
-    
-    // commenting this to not have error in tests
-    // expect(await screen.findByTestId('list-box')).toBeTruthy()
+
+    expect(await screen.findByTestId('list-box')).toBeTruthy()
   })
 })

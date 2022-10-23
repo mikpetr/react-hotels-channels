@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import type { RootState } from '@/store'
 
 import ChannelsListRow from './ChannelsListRow'
+import { Channel } from '@/types'
 
 interface ChannelsListProps {
   className?: string
@@ -13,9 +14,7 @@ export default function ChannelsList(props: ChannelsListProps) {
 
   return (
     <div
-      className={
-        `border border-slate-300 dark:border-slate-500/30 rounded-lg overflow-hidden ${props.className}`
-      }
+      className={`border border-slate-300 dark:border-slate-500/30 rounded-lg overflow-hidden ${props.className}`}
       data-testid="channels-list">
       <table className="table-auto w-full text-sm">
         <thead className="bg-slate-50 dark:bg-slate-700 font-semibold">
@@ -25,7 +24,9 @@ export default function ChannelsList(props: ChannelsListProps) {
           </tr>
         </thead>
         <tbody>
-          {channels.map(channel => <ChannelsListRow hotelId={props.hotelId} channel={channel} key={channel.value} />)}
+          {channels.map((channel: Channel) => (
+            <ChannelsListRow hotelId={props.hotelId} channel={channel} key={channel.value} />
+          ))}
         </tbody>
       </table>
     </div>

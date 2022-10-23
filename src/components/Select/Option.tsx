@@ -1,5 +1,12 @@
 import { ListState } from 'react-stately'
-import { AriaOptionProps, FocusRingAria, mergeProps, OptionAria, useFocusRing, useOption } from 'react-aria'
+import {
+  AriaOptionProps,
+  FocusRingAria,
+  mergeProps,
+  OptionAria,
+  useFocusRing,
+  useOption
+} from 'react-aria'
 import { useRef, RefObject } from 'react'
 
 interface OptionProps extends AriaOptionProps {
@@ -10,7 +17,7 @@ interface OptionProps extends AriaOptionProps {
 export default function Option({ item, state }: OptionProps) {
   // Get props for the option element
   const ref: RefObject<HTMLLIElement> = useRef() as RefObject<HTMLLIElement>
-  const { optionProps, isSelected, isDisabled }: OptionAria = useOption(
+  const { optionProps, isSelected }: OptionAria = useOption(
     { key: item.key },
     state,
     ref
@@ -27,7 +34,14 @@ export default function Option({ item, state }: OptionProps) {
       style={{
         outline: isFocusVisible ? '2px solid orange' : 'none'
       }}
-      className={`${isSelected ? 'text-white bg-indigo-600 dark:bg-slate-800 dark:text-white' : 'text-gray-900'} relative cursor-default select-none py-2 pl-3 pr-9 w-72 dark:text-slate-400`}
+      className={
+        `${
+          isSelected ?
+            'text-white bg-indigo-600 dark:bg-slate-800 dark:text-white' :
+            'text-gray-900'
+          }
+          relative cursor-default select-none py-2 pl-3 pr-9 w-72 dark:text-slate-400
+        `}
       data-testid="select-option"
     >
       {item.rendered}

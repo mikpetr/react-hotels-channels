@@ -14,10 +14,9 @@ import {
 import { useRef, RefObject } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-// Reuse the ListBox, Popover, and Button from your component library. See below for details.
 import Button from '@/components/Button'
 import ListBox from './ListBox'
-import { Popover } from './Popover'
+import Popover from './Popover'
 
 interface SelectProps extends AriaSelectOptions<object> {
   value?: {
@@ -66,12 +65,14 @@ export default function Select(props: SelectProps) {
     <div data-testid="hotel-select">
       <OverlayProvider>
         <div {...labelProps} className="text-base">{props.label}</div>
+
         <HiddenSelect
           state={state}
           triggerRef={buttonRef}
           label={props.label}
           name={props.name}
         />
+
         <Button
           {...triggerProps}
           buttonRef={buttonRef}
@@ -85,18 +86,18 @@ export default function Select(props: SelectProps) {
           </span>
           <ChevronDownIcon className="-mr-1 ml-2 h-6 w-6" aria-hidden="true" />
         </Button>
-        {state.isOpen &&
-          (
-            <OverlayContainer>
-              <Popover {...overlayProps} {...positionProps} isOpen={state.isOpen} onClose={state.close} ref={overlayRef} >
-                <ListBox
-                  {...menuProps}
-                  selectionMode="single"
-                  state={state}
-                />
-              </Popover>
-            </OverlayContainer>
-          )}
+
+        {state.isOpen && (
+          <OverlayContainer>
+            <Popover {...overlayProps} {...positionProps} isOpen={state.isOpen} onClose={state.close} ref={overlayRef} >
+              <ListBox
+                {...menuProps}
+                selectionMode="single"
+                state={state}
+              />
+            </Popover>
+          </OverlayContainer>
+        )}
       </OverlayProvider>
     </div>
   )
